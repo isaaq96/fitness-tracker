@@ -33,10 +33,7 @@ export async function sendMagicLinkAction(formData: FormData) {
   }
 
   const headerStore = await headers();
-  const origin =
-    headerStore.get("origin") ??
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    "http://localhost:3000";
+  const origin = getSiteOrigin(headerStore);
 
   const { error } = await supabase.auth.signInWithOtp({
     email: parsed.data.email,
@@ -52,6 +49,32 @@ export async function sendMagicLinkAction(formData: FormData) {
   redirect(
     `/login?sent=1&email=${encodeURIComponent(parsed.data.email)}`,
   );
+}
+
+function getSiteOrigin(headerStore: Headers) {
+  const directOrigin = headerStore.get("origin");
+
+  if (directOrigin) {
+    return directOrigin.replace(/\/$/, "");
+  }
+
+  const forwardedHost = headerStore.get("x-forwarded-host");
+
+  if (forwardedHost) {
+    const forwardedProto = headerStore.get("x-forwarded-proto") ?? "https";
+    return `${forwardedProto}://${forwardedHost}`.replace(/\/$/, "");
+  }
+
+  const configuredUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    process.env.NEXT_PUBLIC_VERCEL_URL ??
+    "http://localhost:3000";
+
+  const normalizedUrl = configuredUrl.startsWith("http")
+    ? configuredUrl
+    : `https://${configuredUrl}`;
+
+  return normalizedUrl.replace(/\/$/, "");
 }
 
 export async function signOutAction() {

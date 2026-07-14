@@ -16,6 +16,7 @@
 ### Changed
 - Reframed the app from generic Next starter content to the `Backsafe Tracker` concept
 - Introduced the first-pass visual system and app-level branding
+- Hardened auth redirect handling so production sign-in links prefer the live site origin and root-level auth callbacks are forwarded into `/auth/confirm`
 
 ### Notes
 - The product direction is a low-cost personal PoC:
