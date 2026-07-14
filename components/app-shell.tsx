@@ -31,8 +31,8 @@ export function AppShell({
       <header className="glass-panel sticky top-4 z-20 rounded-[1.75rem] px-4 py-4 sm:px-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--accent)] text-white shadow-lg shadow-orange-200/70">
-              <Dumbbell className="h-5 w-5" />
+            <div className="logo-badge flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--accent)] text-white shadow-lg shadow-orange-200/70">
+              <Dumbbell className="logo-dumbbell h-5 w-5" />
             </div>
             <div>
               <p className="section-title">ForgeFlow</p>

@@ -19,6 +19,7 @@
 - Hardened auth redirect handling so production sign-in links prefer the live site origin and root-level auth callbacks are forwarded into `/auth/confirm`
 - Repositioned the landing experience toward a more commercial-ready `ForgeFlow` brand with broader product messaging and a stronger premium layout
 - Replaced the magic-link entry flow with centered email-and-password sign-in and account creation screens aligned to the new `ForgeFlow` landing concept
+- Added a subtle animated dumbbell mark to the `ForgeFlow` header branding on the landing and in-app navigation
 
 ### Notes
 - The product direction is a low-cost personal PoC:

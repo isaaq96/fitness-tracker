@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { CheckCircle2, LockKeyhole, Mail, ShieldCheck } from "lucide-react";
+import {
+  CheckCircle2,
+  Dumbbell,
+  LockKeyhole,
+  Mail,
+  ShieldCheck,
+} from "lucide-react";
 import { clsx } from "clsx";
 
 import {
@@ -38,7 +44,9 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
     <main className="mx-auto min-h-screen w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
       <section className="soft-orb relative overflow-hidden rounded-[2.75rem] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,252,247,0.96),rgba(244,235,224,0.98))] px-5 py-6 shadow-[0_30px_90px_rgba(24,18,12,0.10)] sm:px-8 sm:py-8 lg:px-12 lg:py-10">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--accent)] text-white" />
+          <div className="logo-badge flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--accent)] text-white shadow-lg shadow-orange-200/50">
+            <Dumbbell className="logo-dumbbell h-5 w-5" />
+          </div>
           <div>
             <p className="text-lg font-semibold">ForgeFlow</p>
             <p className="text-sm text-[var(--ink-soft)]">
