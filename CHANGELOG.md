@@ -10,7 +10,7 @@
 - App shell, login page, today page, history screens, workout chooser, and program settings scaffold
 - Local workout prototype data layer for `Day 1` to `Day 6`
 - Client-side workout logger with next-set flow and exercise-note/session-note inputs
-- Supabase SSR helpers, middleware protection, and magic-link auth actions
+- Supabase SSR helpers, middleware protection, and auth action scaffolding
 - Initial Supabase SQL migration and seed notes for the default program bootstrap
 
 ### Changed
@@ -18,6 +18,7 @@
 - Introduced the first-pass visual system and app-level branding
 - Hardened auth redirect handling so production sign-in links prefer the live site origin and root-level auth callbacks are forwarded into `/auth/confirm`
 - Repositioned the landing experience toward a more commercial-ready `ForgeFlow` brand with broader product messaging and a stronger premium layout
+- Replaced the magic-link entry flow with centered email-and-password sign-in and account creation screens aligned to the new `ForgeFlow` landing concept
 
 ### Notes
 - The product direction is a low-cost personal PoC:
