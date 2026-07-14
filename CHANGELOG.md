@@ -17,6 +17,7 @@
 - Reframed the app from generic Next starter content to the `Backsafe Tracker` concept
 - Introduced the first-pass visual system and app-level branding
 - Hardened auth redirect handling so production sign-in links prefer the live site origin and root-level auth callbacks are forwarded into `/auth/confirm`
+- Repositioned the landing experience toward a more commercial-ready `ForgeFlow` brand with broader product messaging and a stronger premium layout
 
 ### Notes
 - The product direction is a low-cost personal PoC:

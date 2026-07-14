@@ -35,9 +35,9 @@ export function AppShell({
               <Dumbbell className="h-5 w-5" />
             </div>
             <div>
-              <p className="section-title">Backsafe Tracker</p>
+              <p className="section-title">ForgeFlow</p>
               <p className="mt-1 text-sm text-[var(--ink-soft)]">
-                Mobile-first workout logging
+                Strength training operating system
               </p>
             </div>
           </div>

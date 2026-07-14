@@ -1,18 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --surface: #fffaf3;
-  --surface-strong: #fff3df;
-  --surface-card: rgba(255, 255, 255, 0.82);
-  --surface-muted: #f0e5d3;
-  --line: rgba(91, 64, 36, 0.14);
-  --line-strong: rgba(91, 64, 36, 0.24);
-  --ink: #24170d;
-  --ink-soft: #5f4d3a;
-  --accent: #dc6e3f;
-  --accent-deep: #9c4020;
-  --accent-wash: #ffdfc7;
-  --shadow: 0 20px 40px rgba(72, 39, 15, 0.08);
+  --surface: #f6f0e8;
+  --surface-strong: #efe3d4;
+  --surface-card: rgba(255, 251, 246, 0.84);
+  --surface-muted: #e6d8c7;
+  --line: rgba(63, 43, 28, 0.1);
+  --line-strong: rgba(63, 43, 28, 0.18);
+  --ink: #1f160f;
+  --ink-soft: #655648;
+  --accent: #ca6a3d;
+  --accent-deep: #8f4320;
+  --accent-wash: #f5d4bf;
+  --accent-alt: #1e6a60;
+  --accent-alt-wash: #d7eee8;
+  --hero: #1d1610;
+  --hero-ink: #f7efe6;
+  --shadow: 0 24px 60px rgba(45, 28, 12, 0.08);
 }
 
 @theme inline {
@@ -42,7 +46,7 @@ textarea {
 }
 
 ::selection {
-  background: rgba(220, 110, 63, 0.2);
+  background: rgba(202, 106, 61, 0.24);
 }
 
 .glass-panel {
@@ -65,4 +69,40 @@ textarea {
     linear-gradient(rgba(91, 64, 36, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(91, 64, 36, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.soft-orb {
+  position: relative;
+  overflow: hidden;
+}
+
+.soft-orb::before {
+  content: "";
+  position: absolute;
+  right: -8%;
+  bottom: -18%;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(202, 106, 61, 0.34), transparent 65%);
+  pointer-events: none;
+}
+
+.soft-orb::after {
+  content: "";
+  position: absolute;
+  top: -18%;
+  left: -10%;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(30, 106, 96, 0.22), transparent 68%);
+  pointer-events: none;
 }
