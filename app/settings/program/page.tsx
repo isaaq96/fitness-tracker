@@ -1,0 +1,79 @@
+import { PencilLine } from "lucide-react";
+
+import { AppShell } from "@/components/app-shell";
+import { getProgramDays } from "@/lib/workout-service";
+
+export default function ProgramSettingsPage() {
+  const days = getProgramDays();
+
+  return (
+    <AppShell
+      title="Program Setup"
+      subtitle="This page is scaffolded for template editing: reorder exercises, adjust sets, and keep everything in `Day 1` to `Day 6` language."
+    >
+      <section className="glass-panel rounded-[2rem] p-5">
+        <div className="flex items-start gap-3">
+          <div className="rounded-2xl bg-[var(--accent-wash)] p-3 text-[var(--accent-deep)]">
+            <PencilLine className="h-5 w-5" />
+          </div>
+          <div>
+            <p className="section-title">Editor scaffold</p>
+            <h2 className="mt-2 text-2xl font-semibold">
+              Ready for Supabase-backed saving
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--ink-soft)]">
+              The UI shape is here so we can wire real mutations next. Once the
+              database migration is applied, this page should read and write the
+              active program per user rather than the local mock template.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-6 space-y-4">
+        {days.map((day) => (
+          <article
+            key={day.id}
+            className="glass-panel rounded-[2rem] p-5"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="section-title">Program day</p>
+                <h2 className="mt-2 text-2xl font-semibold">{day.title}</h2>
+                <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
+                  {day.summary}
+                </p>
+              </div>
+              <div className="rounded-full border border-[var(--line)] bg-white/70 px-4 py-2 text-sm font-medium text-[var(--ink-soft)]">
+                {day.exercises.length} exercises
+              </div>
+            </div>
+
+            <div className="mt-5 space-y-3">
+              {day.exercises.map((exercise, index) => (
+                <div
+                  key={exercise.exerciseKey}
+                  className="rounded-2xl border border-[var(--line)] bg-white/70 p-4"
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-semibold">
+                        {index + 1}. {exercise.name}
+                      </p>
+                      <p className="mt-1 text-sm text-[var(--ink-soft)]">
+                        {exercise.targetSets} sets • {exercise.repRange}
+                      </p>
+                    </div>
+                    <div className="rounded-full bg-[var(--surface-strong)] px-3 py-1 text-xs font-medium text-[var(--ink-soft)]">
+                      {exercise.cue}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </section>
+    </AppShell>
+  );
+}

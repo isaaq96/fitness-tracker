@@ -1,0 +1,6 @@
+-- New users are bootstrapped automatically by the auth trigger in the initial
+-- migration. If you created auth users before running that migration, sign in
+-- once after applying it or manually insert a profile row and run the
+-- bootstrap function:
+--
+-- select public.bootstrap_default_program_for_profile('<profile-uuid>');
