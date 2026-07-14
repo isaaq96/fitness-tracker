@@ -112,8 +112,9 @@ export function WorkoutLogger({
               {completedSets}/{totalSets} sets filled
             </h2>
             <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
-              This prototype keeps state in the browser for now. The finish flow
-              and next-set rhythm are here so we can wire persistence next.
+              This demo keeps state in the browser for now. The set flow and
+              history placement are here so we can validate the training rhythm
+              before persistence is fully switched on.
             </p>
           </div>
           <div className="rounded-3xl border border-[var(--line)] bg-white/70 px-5 py-4 text-right">
@@ -153,11 +154,12 @@ export function WorkoutLogger({
             <div>
               <p className="section-title text-emerald-800">Finish workout</p>
               <h3 className="mt-2 text-xl font-semibold text-emerald-950">
-                Prototype flow complete
+                Session flow complete
               </h3>
               <p className="mt-2 text-sm leading-6 text-emerald-900">
-                In the real version this button will persist the session, stamp
-                `finished_at`, and make the next program day the new suggestion.
+                In the connected version this button will save the session,
+                stamp `finished_at`, and make the next program day the new
+                suggestion.
               </p>
             </div>
           </div>
@@ -178,7 +180,7 @@ export function WorkoutLogger({
                   <p className="section-title">Exercise</p>
                   <h3 className="mt-2 text-2xl font-semibold">{exercise.name}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
-                    {exercise.targetSets} sets • {exercise.repRange} • {exercise.cue}
+                    {exercise.targetSets} sets - {exercise.repRange} - {exercise.cue}
                   </p>
                 </div>
 
@@ -206,9 +208,9 @@ export function WorkoutLogger({
                           {entry.sets
                             .map(
                               (set) =>
-                                `S${set.setNumber}: ${set.weightKg}kg × ${set.reps}`,
+                                `S${set.setNumber}: ${set.weightKg}kg x ${set.reps}`,
                             )
-                            .join(" • ")}
+                            .join(" | ")}
                         </p>
                         {entry.note ? (
                           <p className="mt-2 text-xs leading-5 text-[var(--ink-soft)]">

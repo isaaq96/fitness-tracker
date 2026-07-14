@@ -1,44 +1,35 @@
-# Fitness Tracker
+# ForgeFlow
 
-Mobile-first workout tracker scaffolded for a cheap personal rollout.
+ForgeFlow is a mobile-first training app for running day-based strength programs, logging sessions quickly, and keeping exact exercise history close to the workout.
 
 ## Stack
 
 - `Next.js` app router
-- `Supabase` for auth + Postgres
+- `Supabase` for auth and Postgres
 - `Vercel` for hosting
-- `GitHub` for source control and deploy integration
+- `GitHub` for source control and deployment integration
 
 ## Product Shape
 
-- Suggest the next workout day automatically
-- Allow manual day selection
+- Suggest the next workout day automatically once a session is finished
+- Let the user override and pick a different day when needed
 - Show the full workout while logging
-- Provide a `Next set` flow
-- Show the last two times you did each exact exercise
-- Keep history workout-by-workout
+- Keep a `Next set` rhythm for faster in-gym entry
+- Show the last two logged sessions for the exact exercise
+- Keep history workout by workout
 - Support exercise-level notes and session notes
-- Keep the data model ready for multiple users later
+- Leave room for multiple users later
 
-## Repo Tracking
-
-- High-level release-style progress lives in [CHANGELOG.md](/C:/Users/isaaq/OneDrive/Documents/Fitness%20Tracker/CHANGELOG.md)
-- The repo is being built as an incremental PoC, so each major scaffold step should be logged there
-
-## Current Status
+## Current Build Status
 
 The repository currently includes:
 
-- base Next.js scaffold
-- first-pass visual system and branding
-- Supabase dependencies
-
-The next milestone is wiring:
-
-1. page structure
-2. auth flow
-3. workout prototype UI
-4. Supabase schema and bootstrap SQL
+- branded landing and account entry flow
+- Supabase-backed email and password auth
+- password recovery and reset flow
+- app shell, workout chooser, history, and program screens
+- local starter workout data and a workout logging prototype flow
+- initial Supabase schema and bootstrap SQL
 
 ## Local Setup
 
@@ -54,14 +45,14 @@ $env:PATH = 'C:/Users/isaaq/.cache/codex-runtimes/codex-primary-runtime/dependen
 & 'C:/Users/isaaq/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/pnpm.cmd' dev
 ```
 
-## Deployment Plan
+## Deployment
 
-- `GitHub` repo as source of truth
-- `Vercel Hobby` for deployment
-- `Supabase Free` for auth + database
-- free `vercel.app` domain initially
+- `GitHub` is the source of truth
+- `Vercel Hobby` is the lowest-cost hosting path
+- `Supabase Free` handles auth and database for the current build
+- the default live URL can stay on `vercel.app` until a custom domain is worth it
 
-## Notes
+## Repo Tracking
 
-- Keep the repo private or public based on your preference, but the cheapest live setup does not require any paid infrastructure to start.
-- Avoid committing real secrets; keep Supabase env vars in `.env.local` and Vercel project settings.
+- high-level build progress lives in [CHANGELOG.md](/C:/Users/isaaq/OneDrive/Documents/Fitness%20Tracker/CHANGELOG.md)
+- infrastructure secrets should stay out of git and live in local env files or platform settings

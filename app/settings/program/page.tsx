@@ -9,7 +9,7 @@ export default function ProgramSettingsPage() {
   return (
     <AppShell
       title="Program Setup"
-      subtitle="This page is scaffolded for template editing: reorder exercises, adjust sets, and keep everything in `Day 1` to `Day 6` language."
+      subtitle="Shape the day rotation, exercise order, and set targets while keeping the familiar Day 1 to Day 6 structure."
     >
       <section className="glass-panel rounded-[2rem] p-5">
         <div className="flex items-start gap-3">
@@ -17,14 +17,14 @@ export default function ProgramSettingsPage() {
             <PencilLine className="h-5 w-5" />
           </div>
           <div>
-            <p className="section-title">Editor scaffold</p>
+            <p className="section-title">Program editor</p>
             <h2 className="mt-2 text-2xl font-semibold">
-              Ready for Supabase-backed saving
+              Program editing is the next connected surface
             </h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--ink-soft)]">
-              The UI shape is here so we can wire real mutations next. Once the
-              database migration is applied, this page should read and write the
-              active program per user rather than the local mock template.
+              The layout is ready. Once the live read and write layer is
+              connected, this page will manage the active program per user
+              instead of the local starter data.
             </p>
           </div>
         </div>
@@ -61,7 +61,7 @@ export default function ProgramSettingsPage() {
                         {index + 1}. {exercise.name}
                       </p>
                       <p className="mt-1 text-sm text-[var(--ink-soft)]">
-                        {exercise.targetSets} sets • {exercise.repRange}
+                        {exercise.targetSets} sets - {exercise.repRange}
                       </p>
                     </div>
                     <div className="rounded-full bg-[var(--surface-strong)] px-3 py-1 text-xs font-medium text-[var(--ink-soft)]">

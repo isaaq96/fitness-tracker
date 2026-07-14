@@ -11,7 +11,7 @@ export default function ChooseWorkoutPage() {
   return (
     <AppShell
       title="Choose Workout"
-      subtitle="Manual override lives here: jump into any day without changing the long-term shape of the plan."
+      subtitle="Jump into any day when you want a manual override without changing the long-term shape of the plan."
     >
       <section className="grid gap-4">
         {days.map((day) => {

@@ -30,7 +30,7 @@ export default async function TodayPage() {
   return (
     <AppShell
       title="Today"
-      subtitle="Suggested workout, recent momentum, and the fastest path back into the gym flow."
+      subtitle="Suggested workout, recent session context, and the fastest path back into the day's work."
       userLabel={email ?? "Preview mode"}
       preview={!email}
     >
@@ -105,7 +105,7 @@ export default async function TodayPage() {
                   <div>
                     <p className="text-sm font-semibold">{session.dayTitle}</p>
                     <p className="mt-1 text-sm text-[var(--ink-soft)]">
-                      {format(new Date(session.dateIso), "EEE, d MMM")} •{" "}
+                      {format(new Date(session.dateIso), "EEE, d MMM")} -{" "}
                       {session.exercises.reduce(
                         (sum, exercise) => sum + exercise.sets.length,
                         0,
@@ -126,7 +126,7 @@ export default async function TodayPage() {
         <div className="glass-panel rounded-[2rem] p-5">
           <div className="flex items-center gap-2 text-[var(--ink-soft)]">
             <NotebookPen className="h-4 w-4" />
-            <p className="section-title">Today’s lineup</p>
+            <p className="section-title">Today's lineup</p>
           </div>
 
           <div className="mt-4 space-y-3">
@@ -141,7 +141,7 @@ export default async function TodayPage() {
                       {index + 1}. {exercise.name}
                     </p>
                     <p className="mt-1 text-sm text-[var(--ink-soft)]">
-                      {exercise.targetSets} sets • {exercise.repRange}
+                      {exercise.targetSets} sets - {exercise.repRange}
                     </p>
                   </div>
                   <StatusPill>{exercise.targetSets}</StatusPill>
