@@ -9,6 +9,18 @@ ForgeFlow is a mobile-first training app for running day-based strength programs
 - `Vercel` for hosting
 - `GitHub` for source control and deployment integration
 
+## Repo Structure
+
+- `app/` route files and server actions
+- `components/app/` in-app shell, navigation, and shared UI primitives
+- `components/auth/` account-entry UI building blocks
+- `components/workouts/` workout logging components
+- `lib/supabase/` Supabase browser, server, and middleware helpers
+- `lib/workouts/` workout domain types, starter data, and selectors
+- `supabase/` SQL migrations and seed notes
+- `docs/` architecture, accountability, roadmap, and review notes
+- `.private/` local-only access notes and artifacts, ignored by git
+
 ## Product Shape
 
 - Suggest the next workout day automatically once a session is finished
@@ -29,7 +41,7 @@ The repository currently includes:
 - password recovery and reset flow
 - app shell, workout chooser, history, and program screens
 - local starter workout data and a workout logging prototype flow
-- initial Supabase schema and bootstrap SQL
+- initial Supabase schema, bootstrap SQL, and a follow-up function hardening migration
 
 ## Local Setup
 
@@ -45,6 +57,22 @@ $env:PATH = 'C:/Users/isaaq/.cache/codex-runtimes/codex-primary-runtime/dependen
 & 'C:/Users/isaaq/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/pnpm.cmd' dev
 ```
 
+## Quality Checks
+
+Run the full verification sweep before pushing:
+
+```powershell
+pnpm check
+```
+
+Or run the individual steps:
+
+```powershell
+pnpm lint
+pnpm typecheck
+pnpm build
+```
+
 ## Deployment
 
 - `GitHub` is the source of truth
@@ -55,4 +83,7 @@ $env:PATH = 'C:/Users/isaaq/.cache/codex-runtimes/codex-primary-runtime/dependen
 ## Repo Tracking
 
 - high-level build progress lives in [CHANGELOG.md](/C:/Users/isaaq/OneDrive/Documents/Fitness%20Tracker/CHANGELOG.md)
+- architecture and structure notes live in [docs/ARCHITECTURE.md](/C:/Users/isaaq/OneDrive/Documents/Fitness%20Tracker/docs/ARCHITECTURE.md)
+- operating expectations live in [docs/ACCOUNTABILITY.md](/C:/Users/isaaq/OneDrive/Documents/Fitness%20Tracker/docs/ACCOUNTABILITY.md)
+- current open risks live in [docs/CODEBASE_REVIEW.md](/C:/Users/isaaq/OneDrive/Documents/Fitness%20Tracker/docs/CODEBASE_REVIEW.md)
 - infrastructure secrets should stay out of git and live in local env files or platform settings

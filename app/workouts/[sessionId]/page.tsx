@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 
-import { AppShell } from "@/components/app-shell";
-import { WorkoutLogger } from "@/components/workout-logger";
-import { buildWorkoutDraft } from "@/lib/workout-service";
+import { AppShell } from "@/components/app/app-shell";
+import { WorkoutLogger } from "@/components/workouts/workout-logger";
+import { buildWorkoutDraft } from "@/lib/workouts/service";
 
 type WorkoutPageProps = {
   params: Promise<{ sessionId: string }>;

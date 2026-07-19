@@ -2,9 +2,9 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { ArrowRight } from "lucide-react";
 
-import { AppShell } from "@/components/app-shell";
-import { StatusPill } from "@/components/status-pill";
-import { listCompletedWorkouts } from "@/lib/workout-service";
+import { AppShell } from "@/components/app/app-shell";
+import { StatusPill } from "@/components/app/status-pill";
+import { listCompletedWorkouts } from "@/lib/workouts/service";
 
 export default function HistoryPage() {
   const sessions = listCompletedWorkouts();

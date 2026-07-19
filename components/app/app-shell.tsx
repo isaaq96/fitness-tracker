@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { Dumbbell, History, LayoutDashboard, Settings2 } from "lucide-react";
+import { Dumbbell } from "lucide-react";
 import { clsx } from "clsx";
 
-import { LogoutButton } from "@/components/logout-button";
+import { AppNav } from "@/components/app/app-nav";
+import { LogoutButton } from "@/components/app/logout-button";
 
 type AppShellProps = {
   children: React.ReactNode;
@@ -11,13 +11,6 @@ type AppShellProps = {
   userLabel?: string;
   preview?: boolean;
 };
-
-const navItems = [
-  { href: "/today", label: "Today", icon: LayoutDashboard },
-  { href: "/workouts/new", label: "Workouts", icon: Dumbbell },
-  { href: "/history", label: "History", icon: History },
-  { href: "/settings/program", label: "Program", icon: Settings2 },
-];
 
 export function AppShell({
   children,
@@ -42,34 +35,20 @@ export function AppShell({
             </div>
           </div>
 
-          <nav className="flex flex-wrap gap-2">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white/70 px-4 py-2 text-sm font-medium text-[var(--ink-soft)] transition hover:border-[var(--accent)] hover:text-[var(--ink)]"
-                >
-                  <Icon className="h-4 w-4" />
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
+          <AppNav />
 
           <div className="flex flex-wrap items-center gap-3">
             {userLabel ? (
               <div
                 className={clsx(
-                  "rounded-full border px-4 py-2 text-sm font-medium",
+                  "max-w-[18rem] truncate rounded-full border px-4 py-2 text-sm font-medium",
                   preview
                     ? "border-[var(--line)] bg-[var(--surface-strong)] text-[var(--ink-soft)]"
                     : "border-emerald-200 bg-emerald-50 text-emerald-900",
                 )}
+                title={preview ? "Preview mode" : userLabel}
               >
-                {preview ? "Preview" : userLabel}
+                {preview ? "Preview mode" : userLabel}
               </div>
             ) : null}
             {!preview ? <LogoutButton /> : null}
@@ -77,7 +56,7 @@ export function AppShell({
         </div>
       </header>
 
-      <main className="pb-28 pt-6">
+      <main className="pb-28 pt-7">
         <div className="mb-6">
           <p className="section-title">Session flow</p>
           <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-5xl">

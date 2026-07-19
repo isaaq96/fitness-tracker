@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { AppShell } from "@/components/app-shell";
-import { getProgramDays, getSuggestedDay } from "@/lib/workout-service";
+import { AppShell } from "@/components/app/app-shell";
+import { getProgramDays, getSuggestedDay } from "@/lib/workouts/service";
 
 export default function ChooseWorkoutPage() {
   const days = getProgramDays();

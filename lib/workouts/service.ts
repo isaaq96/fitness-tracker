@@ -1,10 +1,10 @@
-import { completedSessions, programDays } from "@/lib/mock-data";
+import { completedSessions, programDays } from "@/lib/workouts/mock-data";
 import type {
   CompletedWorkoutSession,
   ExerciseHistoryEntry,
   ProgramDay,
   WorkoutDraft,
-} from "@/lib/types";
+} from "@/lib/workouts/types";
 
 const sortedSessions = [...completedSessions].sort((left, right) =>
   right.dateIso.localeCompare(left.dateIso),

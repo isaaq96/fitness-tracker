@@ -3,9 +3,9 @@ import { format } from "date-fns";
 import { ChevronLeft, MessageSquareMore } from "lucide-react";
 import { notFound } from "next/navigation";
 
-import { AppShell } from "@/components/app-shell";
-import { StatusPill } from "@/components/status-pill";
-import { getCompletedWorkoutById } from "@/lib/workout-service";
+import { AppShell } from "@/components/app/app-shell";
+import { StatusPill } from "@/components/app/status-pill";
+import { getCompletedWorkoutById } from "@/lib/workouts/service";
 
 type SessionDetailPageProps = {
   params: Promise<{ sessionId: string }>;

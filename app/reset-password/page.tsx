@@ -1,7 +1,10 @@
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, LockKeyhole, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ShieldCheck } from "lucide-react";
 
 import { updatePasswordAction } from "@/app/actions/auth";
+import { AuthBanner } from "@/components/auth/auth-banner";
+import { AuthField } from "@/components/auth/auth-field";
+import { BrandLockup } from "@/components/auth/brand-lockup";
 import { env } from "@/lib/env";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -32,17 +35,10 @@ export default async function ResetPasswordPage({
   return (
     <main className="mx-auto min-h-screen w-full max-w-4xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
       <section className="soft-orb relative overflow-hidden rounded-[2.75rem] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,252,247,0.96),rgba(244,235,224,0.98))] px-5 py-6 shadow-[0_30px_90px_rgba(24,18,12,0.10)] sm:px-8 sm:py-8 lg:px-12 lg:py-10">
-        <div className="flex items-center gap-3">
-          <div className="logo-badge flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--accent)] text-white shadow-lg shadow-orange-200/50">
-            <LockKeyhole className="logo-dumbbell h-5 w-5" />
-          </div>
-          <div>
-            <p className="text-lg font-semibold">ForgeFlow</p>
-            <p className="text-sm text-[var(--ink-soft)]">
-              Secure your training account.
-            </p>
-          </div>
-        </div>
+        <BrandLockup
+          secure
+          subtitle="Secure your training account."
+        />
 
         <div className="mx-auto mt-10 max-w-2xl">
           <div className="rounded-[2.25rem] border border-[var(--line)] bg-white/90 p-6 shadow-[0_24px_60px_rgba(32,22,16,0.08)] sm:p-8">
@@ -73,32 +69,23 @@ export default async function ResetPasswordPage({
             ) : null}
 
             {error ? (
-              <div className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900">
-                {getResetErrorMessage(error)}
-              </div>
+              <AuthBanner tone="warning">{getResetErrorMessage(error)}</AuthBanner>
             ) : null}
 
             {updated ? (
-              <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-700" />
-                  <div>
-                    <p className="section-title text-emerald-800">Updated</p>
-                    <h2 className="mt-2 text-xl font-semibold text-emerald-950">
-                      Password saved successfully
-                    </h2>
-                    <p className="mt-2 text-sm leading-6 text-emerald-900">
-                      Your account is ready to use with the new password.
-                    </p>
-                    <Link
-                      href="/today"
-                      className="mt-4 inline-flex items-center justify-center rounded-full bg-emerald-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-emerald-800"
-                    >
-                      Continue to dashboard
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <AuthBanner tone="success">
+                Password saved successfully. Your account is ready to use with
+                the new password.
+              </AuthBanner>
+            ) : null}
+
+            {updated ? (
+              <Link
+                href="/today"
+                className="mt-5 inline-flex items-center justify-center rounded-full bg-emerald-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-emerald-800"
+              >
+                Continue to dashboard
+              </Link>
             ) : null}
 
             {!updated && !hasSession ? (
@@ -119,15 +106,19 @@ export default async function ResetPasswordPage({
 
             {!updated && hasSession ? (
               <form action={updatePasswordAction} className="mt-6 space-y-4">
-                <ResetField
+                <AuthField
+                  icon={null}
                   label="New password"
                   name="password"
                   placeholder="At least 8 characters"
+                  type="password"
                 />
-                <ResetField
+                <AuthField
+                  icon={null}
                   label="Confirm password"
                   name="confirmPassword"
                   placeholder="Repeat your new password"
+                  type="password"
                 />
 
                 <div className="flex flex-col gap-3 sm:flex-row">
@@ -150,27 +141,6 @@ export default async function ResetPasswordPage({
         </div>
       </section>
     </main>
-  );
-}
-
-type ResetFieldProps = {
-  label: string;
-  name: string;
-  placeholder: string;
-};
-
-function ResetField({ label, name, placeholder }: ResetFieldProps) {
-  return (
-    <label className="block">
-      <span className="section-title">{label}</span>
-      <input
-        required
-        type="password"
-        name={name}
-        placeholder={placeholder}
-        className="mt-2 w-full rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-base outline-none placeholder:text-[var(--ink-soft)]/70"
-      />
-    </label>
   );
 }
 

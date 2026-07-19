@@ -2,15 +2,15 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { ArrowRight, Clock3, NotebookPen } from "lucide-react";
 
-import { AppShell } from "@/components/app-shell";
-import { StatusPill } from "@/components/status-pill";
+import { AppShell } from "@/components/app/app-shell";
+import { StatusPill } from "@/components/app/status-pill";
 import { env } from "@/lib/env";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   getRecentSessions,
   getSuggestedDay,
   listCompletedWorkouts,
-} from "@/lib/workout-service";
+} from "@/lib/workouts/service";
 
 export default async function TodayPage() {
   const suggestedDay = getSuggestedDay();
@@ -126,7 +126,7 @@ export default async function TodayPage() {
         <div className="glass-panel rounded-[2rem] p-5">
           <div className="flex items-center gap-2 text-[var(--ink-soft)]">
             <NotebookPen className="h-4 w-4" />
-            <p className="section-title">Today's lineup</p>
+            <p className="section-title">Today&apos;s lineup</p>
           </div>
 
           <div className="mt-4 space-y-3">

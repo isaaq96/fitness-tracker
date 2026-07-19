@@ -1,11 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { format } from "date-fns";
 import { ArrowRight, CheckCircle2, Flag, History } from "lucide-react";
 import { clsx } from "clsx";
 
-import type { ExerciseHistoryEntry, ProgramDay } from "@/lib/types";
+import type {
+  ExerciseHistoryEntry,
+  ProgramDay,
+} from "@/lib/workouts/types";
 
 type WorkoutLoggerProps = {
   day: ProgramDay;
@@ -43,16 +46,13 @@ export function WorkoutLogger({
   const [current, setCurrent] = useState({ exerciseIndex: 0, setIndex: 0 });
   const [finished, setFinished] = useState(false);
 
-  const totalSets = useMemo(
-    () => day.exercises.reduce((sum, exercise) => sum + exercise.targetSets, 0),
-    [day],
+  const totalSets = day.exercises.reduce(
+    (sum, exercise) => sum + exercise.targetSets,
+    0,
   );
-  const completedSets = useMemo(
-    () =>
-      sets.flat().filter((entry) => entry.weightKg.trim() && entry.reps.trim())
-        .length,
-    [sets],
-  );
+  const completedSets = sets.flat().filter(
+    (entry) => entry.weightKg.trim() && entry.reps.trim(),
+  ).length;
 
   function updateSet(
     exerciseIndex: number,
@@ -112,9 +112,8 @@ export function WorkoutLogger({
               {completedSets}/{totalSets} sets filled
             </h2>
             <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
-              This demo keeps state in the browser for now. The set flow and
-              history placement are here so we can validate the training rhythm
-              before persistence is fully switched on.
+              The training flow is in place. Set saving and completed-session
+              persistence are the remaining data-layer step for this screen.
             </p>
           </div>
           <div className="rounded-3xl border border-[var(--line)] bg-white/70 px-5 py-4 text-right">
@@ -157,8 +156,8 @@ export function WorkoutLogger({
                 Session flow complete
               </h3>
               <p className="mt-2 text-sm leading-6 text-emerald-900">
-                In the connected version this button will save the session,
-                stamp `finished_at`, and make the next program day the new
+                The connected version will save the session, stamp
+                `finished_at`, and make the next program day the new
                 suggestion.
               </p>
             </div>

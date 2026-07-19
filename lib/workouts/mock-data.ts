@@ -1,4 +1,4 @@
-import type { CompletedWorkoutSession, ProgramDay } from "@/lib/types";
+import type { CompletedWorkoutSession, ProgramDay } from "@/lib/workouts/types";
 
 function makeSets(...entries: Array<[number, number]>) {
   return entries.map(([weightKg, reps], index) => ({

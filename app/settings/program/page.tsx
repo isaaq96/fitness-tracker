@@ -1,7 +1,7 @@
 import { PencilLine } from "lucide-react";
 
-import { AppShell } from "@/components/app-shell";
-import { getProgramDays } from "@/lib/workout-service";
+import { AppShell } from "@/components/app/app-shell";
+import { getProgramDays } from "@/lib/workouts/service";
 
 export default function ProgramSettingsPage() {
   const days = getProgramDays();
